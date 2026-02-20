@@ -9,8 +9,13 @@
 <body>
     <div class="container">
         <header>
-            <h1>Gülsen Namıduru</h1>
-            <div id="cv-link" class="cv-link">C.V.</div>
+            <h1><span>g</span><span>ü</span><span>l</span><span>s</span><span>e</span><span>n</span><span>n</span><span>a</span><span>m</span><span>ı</span><span>d</span><span>u</span><span>r</span><span>u</span></h1>
+            <div class="cv-link">
+                <span id="cv-link">about</span><span class="separator">.</span><span id="cv-page-link">cv</span><span class="separator">.</span><span id="contact-link">contact</span>
+            </div>
+            <div class="cv-link">
+                <span id="photography-link">photography</span><span class="separator">.</span><span id="video-link">video</span><span class="separator">.</span><span id="sculpture-link">sculpture/installation</span>
+            </div>
         </header>
 
         <main>
@@ -26,10 +31,11 @@
             <div class="modal-content">
                 <div class="popup-header">
                     <h2 id="popup-title"></h2>
-                    <div class="popup-actions">
-                        <a href="#" id="more-link" class="action-link">(More...)</a>
-                        <a href="#" id="close-popup" class="action-link">(Close)</a>
-                    </div>
+                    <span id="popup-medium" class="medium-tag"></span>
+                </div>
+                <div class="popup-actions">
+                    <a href="#" id="more-link" class="action-link">more</a>
+                    <a href="#" id="close-popup" class="action-link">close</a>
                 </div>
                 
                 <div class="image-slideshow">
@@ -53,8 +59,11 @@
         <div id="detail-view" class="modal detail-modal">
             <div class="modal-content detail-content">
                 <div class="detail-header">
-                    <h2 id="detail-title"></h2>
-                    <a href="#" id="close-detail" class="action-link">(Close)</a>
+                    <div>
+                        <h2 id="detail-title"></h2>
+                        <span id="detail-view-medium" class="medium-tag"></span>
+                    </div>
+                    <a href="#" id="close-detail" class="action-link">close</a>
                 </div>
 
                 <div class="detail-images" id="detail-images">
@@ -67,12 +76,82 @@
         <div id="cv-view" class="modal detail-modal">
             <div class="modal-content detail-content">
                 <div class="detail-header">
-                    <h2>C.V.</h2>
-                    <a href="#" id="close-cv" class="action-link">(Close)</a>
+                    <h2>about</h2>
+                    <a href="#" id="close-cv" class="action-link">close</a>
                 </div>
 
                 <div class="cv-content" id="cv-content">
                     <!-- CV content will be inserted here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact View -->
+        <div id="contact-view" class="modal detail-modal">
+            <div class="modal-content detail-content">
+                <div class="detail-header">
+                    <h2>contact</h2>
+                    <a href="#" id="close-contact" class="action-link">close</a>
+                </div>
+
+                <div class="cv-content" id="contact-content">
+                    <!-- Contact content will be inserted here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- CV Page View -->
+        <div id="cv-page-view" class="modal detail-modal">
+            <div class="modal-content detail-content">
+                <div class="detail-header">
+                    <h2>cv</h2>
+                    <a href="#" id="close-cv-page" class="action-link">close</a>
+                </div>
+
+                <div class="cv-content" id="cv-page-content">
+                    <!-- CV page content will be inserted here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Photography View -->
+        <div id="photography-view" class="modal detail-modal">
+            <div class="modal-content detail-content">
+                <div class="detail-header">
+                    <h2>photography</h2>
+                    <a href="#" id="close-photography" class="action-link">close</a>
+                </div>
+
+                <div class="cv-content" id="photography-content">
+                    <!-- Photography content will be inserted here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Video View -->
+        <div id="video-view" class="modal detail-modal">
+            <div class="modal-content detail-content">
+                <div class="detail-header">
+                    <h2>video</h2>
+                    <a href="#" id="close-video" class="action-link">close</a>
+                </div>
+
+                <div class="cv-content" id="video-content">
+                    <!-- Video content will be inserted here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Sculpture/Installation View -->
+        <div id="sculpture-view" class="modal detail-modal">
+            <div class="modal-content detail-content">
+                <div class="detail-header">
+                    <h2>sculpture/installation</h2>
+                    <a href="#" id="close-sculpture" class="action-link">close</a>
+                </div>
+
+                <div class="cv-content" id="sculpture-content">
+                    <!-- Sculpture/Installation content will be inserted here -->
                 </div>
             </div>
         </div>

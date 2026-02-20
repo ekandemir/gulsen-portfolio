@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail - Gülsen Namıduru</title>
+    <link rel="stylesheet" href="index/index.css">
+</head>
+<body class="detail-page">
+    <div class="container">
+        <div class="detail-page-content">
+            <div class="detail-header">
+                <div>
+                    <h2 id="detail-title"></h2>
+                    <span id="detail-medium" class="medium-tag"></span>
+                </div>
+                <a href="index.html" class="action-link">close</a>
+            </div>
+
+            <div class="detail-images" id="detail-images">
+                <!-- Images and description will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="index/index.js"></script>
+    <script>
+        // Get project ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const projectId = parseInt(urlParams.get('id'));
+        
+        // Find project in portfolioData
+        const project = portfolioData.projects.find(p => p.id === projectId);
+        
+        if (project) {
+            const detailTitle = document.getElementById('detail-title');
+            const detailMedium = document.getElementById('detail-medium');
+            const detailImages = document.getElementById('detail-images');
+            
+            detailTitle.textContent = `${project.title} (${project.year})`;
+            if (project.medium) {
+                detailMedium.textContent = project.medium;
+                detailMedium.style.display = 'inline';
+            } else {
+                detailMedium.style.display = 'none';
+            }
+            
+            // Combine images and videos into a media array
+            const mediaItems = [];
+            if (project.images && project.images.length > 0) {
+                project.images.forEach(imgPath => {
+                    mediaItems.push({ type: 'image', src: imgPath });
+                });
+            }
+            if (project.videos && project.videos.length > 0) {
+                project.videos.forEach(videoPath => {
+                    mediaItems.push({ type: 'video', src: videoPath });
+                });
+            }
+            
+            // Add media to detail view with description after first item
+            detailImages.innerHTML = '';
+            if (mediaItems.length > 0) {
+                mediaItems.forEach((mediaItem, index) => {
+                    let element;
+                    if (mediaItem.type === 'video') {
+                        element = document.createElement('video');
+                        element.src = mediaItem.src;
+                        element.controls = true;
+                        element.style.width = '100%';
+                        element.style.height = 'auto';
+                        element.style.display = 'block';
+                        element.style.marginBottom = '20px';
+                    } else {
+                        element = document.createElement('img');
+                        element.src = mediaItem.src;
+                        element.alt = project.title;
+                    }
+                    detailImages.appendChild(element);
+                    
+                    // Insert description after first media item
+                    if (index === 0) {
+                        const descDiv = document.createElement('div');
+                        descDiv.className = 'detail-description';
+                        // Split by double newlines for paragraphs, preserve single newlines as spaces
+                        const paragraphs = project.fullDescription.split(/\n\n+/);
+                        descDiv.innerHTML = paragraphs.map(p => '<p>' + p.trim().replace(/\n/g, ' ') + '</p>').join('');
+                        detailImages.appendChild(descDiv);
+                    }
+                });
+            } else {
+                detailImages.innerHTML = '<p style="font-size: 14px; color: #666;">No media available</p>';
+                // Still show description if no media
+                const descDiv = document.createElement('div');
+                descDiv.className = 'detail-description';
+                const paragraphs = project.fullDescription.split(/\n\n+/);
+                descDiv.innerHTML = paragraphs.map(p => '<p>' + p.trim().replace(/\n/g, ' ') + '</p>').join('');
+                detailImages.appendChild(descDiv);
+            }
+        } else {
+            document.body.innerHTML = '<div style="padding: 40px;"><h2>Project not found</h2><a href="index.html">Back to portfolio</a></div>';
+        }
+    </script>
+</body>
+</html>
+
